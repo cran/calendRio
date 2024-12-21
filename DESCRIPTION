@@ -1,6 +1,6 @@
 Package: calendRio
 Title: 'calendR' Fork with Additional Features (Backwards Compatible)
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: 
   c(person(given = "José Carlos",
            family = "Soage González",
@@ -24,13 +24,13 @@ Description: Fork of 'calendR' R package to generate ready to print
 Imports: dplyr, forcats, gggibbous, ggimage, ggplot2, suncalc
 License: AGPL (>= 3)
 Encoding: UTF-8
-RoxygenNote: 7.1.2
+RoxygenNote: 7.3.2
 NeedsCompilation: no
-Packaged: 2022-03-09 07:16:44 UTC; lecram
+Packaged: 2024-12-21 09:52:12 UTC; schilling
 Author: José Carlos Soage González [aut, cph],
   Natalia Pérez Veiga [aut, cph],
   Marcel Schilling [aut, cph, cre]
     (<https://orcid.org/0000-0002-3453-7792>)
 Maintainer: Marcel Schilling <foss@mschilli.com>
 Repository: CRAN
-Date/Publication: 2022-03-10 07:50:02 UTC
+Date/Publication: 2024-12-21 10:10:02 UTC

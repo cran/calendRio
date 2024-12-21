@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2020, 2021 José Carlos Soage González <jsoage@uvigo.es>
 # SPDX-FileCopyrightText: 2020, 2021 Natalia Pérez Veiga <naperez@uvigo.es>
-# SPDX-FileCopyrightText: 2022 Marcel schilling <foss@mschilli.com>
+# SPDX-FileCopyrightText: 2022, 2024 Marcel schilling <foss@mschilli.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -10,7 +10,7 @@
 #
 # Copyright (C) 2020, 2021  José Carlos Soage González
 # Copyright (C) 2020, 2021  Natalia Pérez Veiga
-# Copyright (C) 2022  Marcel Schilling
+# Copyright (C) 2022, 2024  Marcel Schilling
 #
 # This file is part of `calendRio`.
 #
@@ -61,7 +61,7 @@
 
 # File:        R/calendRio.R
 # Created:     2022-02-19
-# Last update: 2022-02-23
+# Last update: 2024-12-21
 # Authors:     José Carlos Soage González <jsoage@uvigo.es> [JCSG],
 #              Natalia Pérez Veiga <naperez@uvigo.es> [NPV],
 #              Marcel Schilling <foss@mschilli.com> [MS]
@@ -74,6 +74,10 @@
 # Changelog (reverse chronological) #
 #####################################
 
+# 2024-12-12L
+#  * Bugfix:
+#    * Ensure `length(special.days) == 1L` before comparing to `"weekend"` for
+#      newer versions of R (calendR issue #30). [MS]
 # 2022-02-23:
 #  * Documentation:
 #    * Added return value description to `roxygen2` comments as
@@ -390,7 +394,7 @@ calendR <- function(year = format(Sys.Date(), "%Y"),
     
     if(length(special.days) != length(dates)){
       
-      if(special.days != "weekend") {
+      if(length(special.days) != 1L || special.days != "weekend") {
         stop("special.days must be a numeric vector, a character vector of the length of the number of days of the year or month or 'weekend'")
       } else {
         wend <- FALSE
@@ -472,7 +476,7 @@ calendR <- function(year = format(Sys.Date(), "%Y"),
         if (length(special.days) == length(dates)) {
           fills <- special.days
         } else {
-          if (special.days == "weekend") {
+          if (length(special.days) == 1L && special.days == "weekend") {
             fills <- t2$weekend
           }
         }
@@ -522,7 +526,7 @@ calendR <- function(year = format(Sys.Date(), "%Y"),
         if (length(special.days) == length(dates)) {
           fills <- special.days
         } else {
-          if (special.days == "weekend") {
+          if (length(special.days) == 1L && special.days == "weekend") {
             fills <- t2$weekend
           }
         }
